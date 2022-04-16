@@ -51,7 +51,7 @@ export const MOVIES: Movie[] = [
   },
   {
     id: 7,
-    title: 'Fantastic Beasts: The Secrets of Dumbledore',
+    title: 'Fantastic Beasts',
     poster_path:
       'https://image.tmdb.org/t/p/w300/jrgifaYeUtTnaH7NF5Drkgjg2MB.jpg',
     release_date: '2022-04-07',

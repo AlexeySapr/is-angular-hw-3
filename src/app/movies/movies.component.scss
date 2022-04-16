@@ -1,10 +1,10 @@
-.container {
-  //   background-color: rgb(180, 176, 176);
-}
+// .container {
+//   //   background-color: rgb(180, 176, 176);
+// }
 
-li {
-  //   background-color: rgb(226, 84, 84);
-}
+// li {
+//   //   background-color: rgb(226, 84, 84);
+// }
 
 .movie-list {
   display: grid;
@@ -13,8 +13,17 @@ li {
 }
 
 .movie-list__item {
-  margin: 0 auto 20px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+
   transition: all 0.25s ease-in-out;
+
+  @media screen and (min-width: 576px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 .movie-list__item:hover,
@@ -27,7 +36,6 @@ li {
   margin: 0 auto;
   border-radius: 5px;
   overflow: hidden;
-  height: 400px;
 }
 
 .description {
@@ -40,6 +48,7 @@ li {
   font-weight: 500;
   margin-bottom: 5px;
   color: #048080;
+  font-size: 1.3rem;
 }
 
 .description__year {
