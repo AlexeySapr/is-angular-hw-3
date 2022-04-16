@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'is-angular-hw-3';
-  themeMode: string | null = localStorage.getItem('themeMode') || 'Dark';
+  isThemeDark?: boolean;
 
-  setDarkTheme(): boolean {
-    return this.themeMode === 'Light';
+  ngOnInit(): void {
+    this.isThemeDark = localStorage.getItem('themeMode') === 'Dark';
+  }
+
+  changeTheme(): void {
+    this.isThemeDark = !this.isThemeDark;
   }
 }

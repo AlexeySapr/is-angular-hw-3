@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  themeMode: string | null = localStorage.getItem('themeMode') || 'Light';
+  themeMode?: string = localStorage.getItem('themeMode') || 'Light';
+
+  @Output() onThemeChange = new EventEmitter<string>();
 
   constructor() {}
 
@@ -20,5 +22,6 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('themeMode', 'Light');
       this.themeMode = 'Light';
     }
+    this.onThemeChange.emit(this.themeMode);
   }
 }
