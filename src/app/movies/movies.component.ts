@@ -9,8 +9,7 @@ import { MOVIES } from 'mock-movies';
 export class MoviesComponent implements OnInit {
   movies = MOVIES;
   @Input() isDarkTheme?: boolean;
-
-  viewMode: string = 'Grid';
+  @Input('viewModeMovies') viewMode?: string;
 
   constructor() {}
 

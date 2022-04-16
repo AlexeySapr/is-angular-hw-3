@@ -1,4 +1,4 @@
 <div class="content" [ngClass]="{'theme-dark':isThemeDark}">
-	<app-header (onThemeChange)="changeTheme()"></app-header>
-	<app-movies [isDarkTheme]="isThemeDark"></app-movies>
+	<app-header (onThemeChange)="changeTheme()" (onViewChange)="changeViewMode($event)"></app-header>
+	<app-movies [isDarkTheme]="isThemeDark" [viewModeMovies]="viewMode"></app-movies>
 </div>

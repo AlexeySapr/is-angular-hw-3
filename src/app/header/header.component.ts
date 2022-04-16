@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   isThemeDark?: boolean;
 
   @Output() onThemeChange = new EventEmitter<string>();
+  @Output() onViewChange = new EventEmitter<string>();
 
   constructor() {}
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('viewMode', 'Grid');
       this.viewMode = 'Grid';
     }
+    this.onViewChange.emit(this.viewMode);
   }
 
   setTheme(): void {
