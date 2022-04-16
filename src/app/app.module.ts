@@ -8,9 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieListItemComponent } from './movie-list-item/movie-list-item.component';
+import { TransformBoxOfficePipe } from './transform-box-office.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MoviesComponent, MovieCardComponent, MovieListItemComponent],
+  declarations: [AppComponent, HeaderComponent, MoviesComponent, MovieCardComponent, MovieListItemComponent, TransformBoxOfficePipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
