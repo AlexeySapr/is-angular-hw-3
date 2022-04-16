@@ -10,6 +10,8 @@ export class MoviesComponent implements OnInit {
   movies = MOVIES;
   @Input() isDarkTheme?: boolean;
 
+  viewMode: string = 'Grid';
+
   constructor() {}
 
   ngOnInit(): void {}

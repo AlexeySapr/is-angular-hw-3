@@ -1,53 +1,41 @@
-// .container {
-//   //   background-color: rgb(180, 176, 176);
-// }
-
-.movie-list {
+.movie-list-grid {
   display: grid;
   grid-auto-rows: 1fr;
   margin-top: 30px;
-}
 
-.movie-list__item {
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+  & .movie-list__item {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 
-  transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 
-  @media screen and (min-width: 576px) {
-    margin-left: 5px;
-    margin-right: 5px;
+    @media screen and (min-width: 576px) {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
   }
-}
 
-.movie-list__item:hover,
-.movie-list__item:focus {
-  cursor: pointer;
-  transform: scale(1.03);
-}
-
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  .movie-list {
+  @media screen and (min-width: 576px) and (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .movie-list {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
     grid-template-columns: repeat(3, 1fr);
   }
-}
 
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  .movie-list {
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
     grid-template-columns: repeat(4, 1fr);
   }
-}
 
-@media screen and (min-width: 1200px) {
-  .movie-list {
+  @media screen and (min-width: 1200px) {
     grid-template-columns: repeat(5, 1fr);
   }
 }

@@ -12,9 +12,19 @@ span {
   color: cyan;
 }
 
-.theme-switcher {
+.switchers-container {
   display: flex;
   justify-content: center;
+}
+
+.theme-switcher,
+.view-switcher {
+  display: flex;
+  justify-content: center;
+}
+
+.view-switcher {
+  margin-left: 20px;
 }
 
 .form-check-label {
@@ -30,7 +40,8 @@ span {
     color: azure;
   }
 
-  & .theme-switcher > label {
+  & .theme-switcher > label,
+  & .view-switcher > label {
     color: azure;
   }
 }

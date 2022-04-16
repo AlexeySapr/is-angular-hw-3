@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MovieListItemComponent } from './movie-list-item/movie-list-item.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MoviesComponent, MovieCardComponent],
+  declarations: [AppComponent, HeaderComponent, MoviesComponent, MovieCardComponent, MovieListItemComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
