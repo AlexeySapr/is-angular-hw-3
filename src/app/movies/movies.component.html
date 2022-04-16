@@ -8,7 +8,8 @@
 	<ng-template #listViewMode>
 		<ul class="movie-list-list">
 			<li class="movie-list__item" *ngFor="let movie of movies">
-				<app-movie-list-item [movieItem]="movie" [isDarkTheme]="isDarkTheme"></app-movie-list-item>
+				<app-movie-list-item class="item-container" [movieItem]="movie" [isDarkTheme]="isDarkTheme">
+				</app-movie-list-item>
 			</li>
 		</ul>
 	</ng-template>

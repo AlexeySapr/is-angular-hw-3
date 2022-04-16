@@ -39,3 +39,18 @@
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+.movie-list-list {
+  margin-top: 30px;
+
+  & .movie-list__item {
+    margin-bottom: 20px;
+    transition: all 0.25s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+  }
+}
