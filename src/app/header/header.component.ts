@@ -7,14 +7,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   themeMode?: string = localStorage.getItem('themeMode') || 'Light';
+  viewMode?: string = localStorage.getItem('viewMode') || 'Grid';
   isThemeDark?: boolean;
 
   @Output() onThemeChange = new EventEmitter<string>();
+  @Output() onViewChange = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {
     this.isThemeDark = this.themeMode === 'Dark';
+  }
+
+  setViewMode(): void {
+    if (this.viewMode === 'Grid') {
+      localStorage.setItem('viewMode', 'List');
+      this.viewMode = 'List';
+    } else {
+      localStorage.setItem('viewMode', 'Grid');
+      this.viewMode = 'Grid';
+    }
+    this.onViewChange.emit(this.viewMode);
   }
 
   setTheme(): void {
