@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MOVIES } from 'mock-movies';
 
 @Component({
@@ -8,6 +8,7 @@ import { MOVIES } from 'mock-movies';
 })
 export class MoviesComponent implements OnInit {
   movies = MOVIES;
+  @Input() isDarkTheme?: boolean;
 
   constructor() {}
 

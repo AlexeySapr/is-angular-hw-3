@@ -1,5 +1,7 @@
 <div class="container">
 	<ul class="movie-list">
-		<app-movie-card *ngFor="let movie of movies" [movieItem]="movie"></app-movie-card>
+		<li class="movie-list__item" *ngFor="let movie of movies">
+			<app-movie-card [movieItem]="movie" [isDarkTheme]="isDarkTheme"></app-movie-card>
+		</li>
 	</ul>
 </div>

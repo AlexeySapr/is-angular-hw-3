@@ -1,4 +1,4 @@
-<div [ngClass]="{'content':true, 'theme-dark-content':isThemeDark}">
+<div [ngClass]="{'content':true, 'theme-dark':isThemeDark}">
 	<app-header (onThemeChange)="changeTheme()"></app-header>
-	<app-movies></app-movies>
+	<app-movies [isDarkTheme]="isThemeDark"></app-movies>
 </div>

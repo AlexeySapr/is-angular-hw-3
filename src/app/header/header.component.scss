@@ -1,10 +1,10 @@
 .container {
-  background-color: #014b77;
+  background-color: #8e9aa2;
   text-align: center;
 }
 
-h1 {
-  color: azure;
+.title {
+  color: #2b3131;
 }
 
 span {
@@ -15,14 +15,22 @@ span {
 .theme-switcher {
   display: flex;
   justify-content: center;
-  color: azure;
 }
 
 .form-check-label {
   margin-left: 7px;
+  color: #2b3131;
 }
 
 //theming
-.container.theme-dark {
+.theme-dark {
   background-color: #014b77;
+
+  & .title {
+    color: azure;
+  }
+
+  & .theme-switcher > label {
+    color: azure;
+  }
 }

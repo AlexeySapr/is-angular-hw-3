@@ -8,6 +8,7 @@ import { Movie } from 'movie';
 })
 export class MovieCardComponent implements OnInit {
   @Input('movieItem') movie?: Movie;
+  @Input() isDarkTheme?: boolean;
 
   constructor() {}
 
