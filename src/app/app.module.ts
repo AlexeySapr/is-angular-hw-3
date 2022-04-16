@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MoviesComponent } from './movies/movies.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MoviesComponent],
+  declarations: [AppComponent, HeaderComponent, MoviesComponent, MovieCardComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
