@@ -9,6 +9,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieListItemComponent } from './components/movie-list-item/movie-list-item.component';
 import { TransformBoxOfficePipe } from './pipes/transform-box-office.pipe';
+import { FindComponent } from './components/find/find.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TransformBoxOfficePipe } from './pipes/transform-box-office.pipe';
     MovieCardComponent,
     MovieListItemComponent,
     TransformBoxOfficePipe,
+    FindComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
