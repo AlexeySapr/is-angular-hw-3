@@ -1,22 +1,31 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  themeMode?: string = localStorage.getItem('themeMode') || 'Light';
-  viewMode?: string = localStorage.getItem('viewMode') || 'Grid';
-  isThemeDark?: boolean;
+export class HeaderComponent implements OnInit, OnDestroy {
+  public viewMode?: string = localStorage.getItem('viewMode') || 'Grid';
+  public themeMode?: string;
+  private subscription?: Subscription;
 
-  @Output() onThemeChange = new EventEmitter<string>();
   @Output() onViewChange = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(public themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.isThemeDark = this.themeMode === 'Dark';
+    this.subscription = this.themeService.theme$.subscribe((value) => {
+      this.themeMode = value;
+    });
   }
 
   setViewMode(): void {
@@ -30,16 +39,13 @@ export class HeaderComponent implements OnInit {
     this.onViewChange.emit(this.viewMode);
   }
 
-  setTheme(): void {
-    if (this.themeMode === 'Light') {
-      localStorage.setItem('themeMode', 'Dark');
-      this.themeMode = 'Dark';
-      this.isThemeDark = true;
-    } else {
-      localStorage.setItem('themeMode', 'Light');
-      this.themeMode = 'Light';
-      this.isThemeDark = false;
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
-    this.onThemeChange.emit(this.themeMode);
   }
 }

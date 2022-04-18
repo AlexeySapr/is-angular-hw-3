@@ -1,17 +1,31 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MOVIES } from 'src/app/constants/mock-movies';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
   movies = MOVIES;
-  @Input() isDarkTheme?: boolean;
   @Input('viewModeMovies') viewMode?: string;
 
-  constructor() {}
+  public themeMode?: string;
+  private subscription?: Subscription;
 
-  ngOnInit(): void {}
+  constructor(public themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    this.subscription = this.themeService.theme$.subscribe((value) => {
+      this.themeMode = value;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }

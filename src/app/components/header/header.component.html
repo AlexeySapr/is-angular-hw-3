@@ -1,10 +1,10 @@
-<div class="container" [ngClass]="{'theme-dark':isThemeDark}">
+<div class="container" [class.theme-dark]="themeMode === 'Dark'">
 	<h1 class="title">Home work <span>movies</span></h1>
 
 	<div class="switchers-container">
 		<div class="form-check form-switch theme-switcher">
 			<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-				[checked]="isThemeDark" (click)="setTheme()">
+				[checked]="themeMode === 'Dark'" (click)="toggleTheme()">
 			<label class="form-check-label" for="flexSwitchCheckDefault">{{themeMode}} theme</label>
 		</div>
 

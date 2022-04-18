@@ -1,17 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'is-angular-hw-3';
-  isThemeDark?: boolean;
+  public themeMode?: string;
+  private subscription?: Subscription;
   viewMode?: any;
 
+  constructor(public themeService: ThemeService) {}
+
   ngOnInit(): void {
-    this.isThemeDark = localStorage.getItem('themeMode') === 'Dark';
+    this.subscription = this.themeService.theme$.subscribe((value) => {
+      this.themeMode = value;
+    });
+
     this.viewMode = localStorage.getItem('viewMode') || 'Grid';
   }
 
@@ -19,7 +27,9 @@ export class AppComponent implements OnInit {
     this.viewMode = ev;
   }
 
-  changeTheme(): void {
-    this.isThemeDark = !this.isThemeDark;
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
