@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FindService } from 'src/app/services/find.service';
 
 @Component({
   selector: 'app-find',
   templateUrl: './find.component.html',
   styleUrls: ['./find.component.scss'],
 })
-export class FindComponent implements OnInit {
+export class FindComponent {
   public inputText = '';
 
-  constructor() {}
+  constructor(public findService: FindService) {}
 
-  ngOnInit(): void {}
+  handleChange(event: any) {
+    this.inputText = event;
 
-  onClick() {
-    console.log('event: ', this.inputText);
+    if (event === '') {
+      this.findService.filterMovie(this.inputText);
+    }
+  }
+
+  onFindClick() {
+    this.findService.filterMovie(this.inputText);
   }
 }
