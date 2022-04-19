@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-movie-list-item',
@@ -10,7 +11,12 @@ export class MovieListItemComponent implements OnInit {
   @Input('movieItem') movie?: Movie;
   @Input() isDarkTheme?: boolean;
 
-  constructor() {}
+  constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {}
+
+  onDeleteClick(id: any) {
+    console.log('deleteID: ', id);
+    this.moviesService.deleteMovie(id);
+  }
 }

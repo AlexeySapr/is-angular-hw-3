@@ -38,6 +38,12 @@ export class MoviesService {
     localStorage.setItem('movieList', JSON.stringify(this.movies));
   }
 
+  deleteMovie(id: string) {
+    const deleteIndex = this.movies.findIndex((movie) => movie.id === id);
+    this.movies.splice(deleteIndex, 1);
+    localStorage.setItem('movieList', JSON.stringify(this.movies));
+  }
+
   // logMovies(): void {
   //   console.log('filteredMovies: ', this.filteredMovies$);
   // }
