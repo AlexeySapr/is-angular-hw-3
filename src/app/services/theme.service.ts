@@ -21,15 +21,14 @@ export class ThemeService {
     const curVal = this.theme$.value;
 
     if (curVal === 'Light') {
-      localStorage.setItem('themeMode', 'Dark');
-      this.theme$.next('Dark');
+      this.setTheme('Dark');
     } else {
-      localStorage.setItem('themeMode', 'Light');
-      this.theme$.next('Light');
+      this.setTheme('Light');
     }
   }
 
   private setTheme(theme: 'Dark' | 'Light'): void {
     localStorage.setItem('themeMode', theme);
+    this.theme$.next(theme);
   }
 }

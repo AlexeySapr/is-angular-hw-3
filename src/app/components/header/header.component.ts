@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription = this.themeService.theme$.subscribe((value) => {
       this.themeMode = value;
     });
+    console.log('this.themeMode: ', this.themeMode);
   }
 
   setViewMode(): void {

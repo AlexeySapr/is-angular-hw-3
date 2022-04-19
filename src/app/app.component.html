@@ -1,5 +1,5 @@
 <div class="content" [class.theme-dark]="themeMode === 'Dark'">
 	<app-header (onViewChange)="changeViewMode($event)"></app-header>
-	<app-find></app-find>
+	<app-find [isDarkTheme]="themeMode === 'Dark'"></app-find>
 	<app-movies [viewModeMovies]="viewMode"></app-movies>
 </div>

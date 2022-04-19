@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FindService } from 'src/app/services/find.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { FindService } from 'src/app/services/find.service';
 })
 export class FindComponent {
   public inputText = '';
+  @Input() isDarkTheme?: boolean;
 
   constructor(public findService: FindService) {}
 
