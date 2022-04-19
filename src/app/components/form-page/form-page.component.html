@@ -4,25 +4,25 @@
 	</div>
 
 	<div class="form-container">
-		<form class="row">
+		<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
 			<div class="form-group col-md-6 mb-3">
 				<label for="movieTitle" class="form-label">Title:</label>
-				<input type="text" class="form-control" id="movieTitle">
+				<input type="text" class="form-control" id="movieTitle" formControlName="title">
 			</div>
 
 			<div class="form-group col-md-6 mb-3">
 				<label for="moviePoster" class="form-label">Poster:</label>
-				<input type="file" accept="image/*" class="form-control" id="moviePoster">
+				<input type="file" accept="image/*" class="form-control" id="moviePoster" formControlName="fileImage">
 			</div>
 
 			<div class="form-group col-md-6 mb-3">
 				<label for="movieRelease" class="form-label">Release date:</label>
-				<input type="date" class="form-control" id="movieRelease">
+				<input type="date" class="form-control" id="movieRelease" formControlName="date">
 			</div>
 
 			<div class="form-group col-md-6 mb-3">
 				<label for="movieBoxOffice" class="form-label">Box office:</label>
-				<input type="number" class="form-control" id="movieBoxOffice">
+				<input type="number" class="form-control" id="movieBoxOffice" formControlName="boxOffice">
 			</div>
 			<div class="btn-cont">
 				<button type="submit" class="btn btn-primary">Add movie</button>
