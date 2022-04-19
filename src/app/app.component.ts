@@ -11,20 +11,13 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'is-angular-hw-3';
   public themeMode?: string;
   private subscription?: Subscription;
-  viewMode?: any;
 
-  constructor(public themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.subscription = this.themeService.theme$.subscribe((value) => {
       this.themeMode = value;
     });
-
-    this.viewMode = localStorage.getItem('viewMode') || 'Grid';
-  }
-
-  changeViewMode(ev: string): void {
-    this.viewMode = ev;
   }
 
   ngOnDestroy(): void {

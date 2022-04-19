@@ -6,14 +6,25 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService {
   public theme$ = new BehaviorSubject('Light');
+  public view$ = new BehaviorSubject('List');
 
   constructor() {
+    //Theme mode
     const localStorageTheme = localStorage.getItem('themeMode');
 
     if (localStorageTheme === 'Dark' || localStorageTheme === 'Light') {
       this.setTheme(localStorageTheme);
     } else {
       this.setTheme('Light');
+    }
+
+    //View mode
+    const localStorageView = localStorage.getItem('viewMode');
+
+    if (localStorageView === 'Grid' || localStorageView === 'List') {
+      this.setView(localStorageView);
+    } else {
+      this.setView('List');
     }
   }
 
@@ -27,8 +38,23 @@ export class ThemeService {
     }
   }
 
+  public toggleView(): void {
+    const curVal = this.view$.value;
+
+    if (curVal === 'List') {
+      this.setView('Grid');
+    } else {
+      this.setView('List');
+    }
+  }
+
   private setTheme(theme: 'Dark' | 'Light'): void {
     localStorage.setItem('themeMode', theme);
     this.theme$.next(theme);
+  }
+
+  private setView(view: 'List' | 'Grid'): void {
+    localStorage.setItem('viewMode', view);
+    this.view$.next(view);
   }
 }

@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MOVIES } from 'src/app/constants/mock-movies';
 import { Movie } from 'src/app/models/movie';
 import { FindService } from 'src/app/services/find.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -17,16 +16,21 @@ export class MoviesComponent implements OnInit, OnDestroy {
   public themeMode?: string;
   private themeSubscr?: Subscription;
 
-  @Input('viewModeMovies') viewMode?: string;
+  public viewMode?: string;
+  private viewSubscr?: Subscription;
 
   constructor(
-    public themeService: ThemeService,
-    public findService: FindService
+    private themeService: ThemeService,
+    private findService: FindService
   ) {}
 
   ngOnInit(): void {
     this.themeSubscr = this.themeService.theme$.subscribe((value) => {
       this.themeMode = value;
+    });
+
+    this.viewSubscr = this.themeService.view$.subscribe((value) => {
+      this.viewMode = value;
     });
 
     this.movieSubscr = this.findService.filteredMovies$.subscribe((value) => {
@@ -37,6 +41,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.themeSubscr) {
       this.themeSubscr.unsubscribe();
+    }
+
+    if (this.viewSubscr) {
+      this.viewSubscr.unsubscribe();
     }
 
     if (this.movieSubscr) {

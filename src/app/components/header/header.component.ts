@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ThemeService } from 'src/app/services/theme.service';
 
@@ -14,30 +8,25 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public viewMode?: string = localStorage.getItem('viewMode') || 'Grid';
   public themeMode?: string;
-  private subscription?: Subscription;
+  public viewMode?: string;
+  private themeSubscr?: Subscription;
+  private viewSubscr?: Subscription;
 
-  @Output() onViewChange = new EventEmitter<string>();
-
-  constructor(public themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.subscription = this.themeService.theme$.subscribe((value) => {
+    this.themeSubscr = this.themeService.theme$.subscribe((value) => {
       this.themeMode = value;
     });
-    console.log('this.themeMode: ', this.themeMode);
+
+    this.viewSubscr = this.themeService.view$.subscribe((value) => {
+      this.viewMode = value;
+    });
   }
 
-  setViewMode(): void {
-    if (this.viewMode === 'Grid') {
-      localStorage.setItem('viewMode', 'List');
-      this.viewMode = 'List';
-    } else {
-      localStorage.setItem('viewMode', 'Grid');
-      this.viewMode = 'Grid';
-    }
-    this.onViewChange.emit(this.viewMode);
+  toggleViewMode(): void {
+    this.themeService.toggleView();
   }
 
   toggleTheme(): void {
@@ -45,8 +34,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.themeSubscr) {
+      this.themeSubscr.unsubscribe();
+    }
+
+    if (this.viewSubscr) {
+      this.viewSubscr.unsubscribe();
     }
   }
 }

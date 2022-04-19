@@ -1,10 +1,5 @@
 <div class="content" [class.theme-dark]="themeMode === 'Dark'">
-	<app-header (onViewChange)="changeViewMode($event)"></app-header>
-	<app-find [isDarkTheme]="themeMode === 'Dark'"></app-find>
-
-	<div class="d-grid gap-2 col-6 mx-auto mt-3">
-		<button class="btn btn-primary" type="button">Add movie</button>
-	</div>
-
-	<app-movies [viewModeMovies]="viewMode"></app-movies>
+	<app-header></app-header>
+	<!-- <app-movies-page [isDarkTheme]="themeMode === 'Dark'" [viewModeMovies]="viewMode"></app-movies-page> -->
+	<router-outlet></router-outlet>
 </div>
