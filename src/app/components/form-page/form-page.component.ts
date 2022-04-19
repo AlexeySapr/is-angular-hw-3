@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form-page',
@@ -7,11 +6,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./form-page.component.scss'],
 })
 export class FormPageComponent implements OnInit {
-  constructor(private location: Location) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  goBack(): void {
-    this.location.back();
-  }
 }

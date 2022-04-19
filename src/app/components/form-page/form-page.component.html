@@ -1,6 +1,32 @@
-<p>form-page works!</p>
+<div class="container p-3">
+	<div class="d-grid gap-2 d-sm-block">
+		<button class="btn btn-primary" type="button" routerLink="/movies-page">Back</button>
+	</div>
 
-<div class="d-grid gap-2 col-6 mx-auto mt-3">
-	<!-- <a class="btn btn-primary" role="button" routerLink="/add-movie">Back</a> -->
-	<button class="btn btn-primary" type="button" (click)="goBack()">Back</button>
+	<div class="form-container">
+		<form class="row">
+			<div class="form-group col-md-6 mb-3">
+				<label for="movieTitle" class="form-label">Title:</label>
+				<input type="text" class="form-control" id="movieTitle">
+			</div>
+
+			<div class="form-group col-md-6 mb-3">
+				<label for="moviePoster" class="form-label">Poster:</label>
+				<input type="file" accept="image/*" class="form-control" id="moviePoster">
+			</div>
+
+			<div class="form-group col-md-6 mb-3">
+				<label for="movieRelease" class="form-label">Release date:</label>
+				<input type="date" class="form-control" id="movieRelease">
+			</div>
+
+			<div class="form-group col-md-6 mb-3">
+				<label for="movieBoxOffice" class="form-label">Box office:</label>
+				<input type="number" class="form-control" id="movieBoxOffice">
+			</div>
+			<div class="btn-cont">
+				<button type="submit" class="btn btn-primary">Add movie</button>
+			</div>
+		</form>
+	</div>
 </div>
