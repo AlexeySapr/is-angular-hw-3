@@ -6,12 +6,19 @@ import { Movie } from '../models/movie';
 @Injectable({
   providedIn: 'root',
 })
-export class FindService {
+export class MoviesService {
   private movies: Movie[];
-  public filteredMovies$ = new BehaviorSubject<Movie[]>([...MOVIES]);
+  public filteredMovies$ = new BehaviorSubject<Movie[]>([]);
 
   constructor() {
-    this.movies = MOVIES;
+    const isMoviesInlocalStorage = localStorage.getItem('movieList');
+
+    if (isMoviesInlocalStorage) {
+      this.movies = JSON.parse(isMoviesInlocalStorage);
+    } else {
+      this.movies = MOVIES;
+    }
+    this.filteredMovies$.next(this.movies);
   }
 
   filterMovie(movieStr: string): void {
@@ -23,6 +30,12 @@ export class FindService {
       );
       this.filteredMovies$.next(afterFilter);
     }
+  }
+
+  addMovie(newMovie: Movie) {
+    this.movies.push(newMovie);
+    this.filterMovie('');
+    localStorage.setItem('movieList', JSON.stringify(this.movies));
   }
 
   // logMovies(): void {

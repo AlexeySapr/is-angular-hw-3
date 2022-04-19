@@ -2,20 +2,22 @@ import { Movie } from 'src/app/models/movie';
 
 export const MOVIES: Movie[] = [
   {
-    id: 1,
+    id: '1',
     title: 'Spider-Man: No Way Home',
     poster_path:
       'https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
     release_date: '2021-12-15',
     box_office: 11452,
+    add_date: '2022',
   },
   {
-    id: 2,
+    id: '2',
     title: 'Death on the Nile',
     poster_path:
       'https://image.tmdb.org/t/p/w300/kVr5zIAFSPRQ57Y1zE7KzmhzdMQ.jpg',
     release_date: '2022-02-09',
     box_office: 12703456,
+    add_date: '2022',
   },
   // {
   //   id: 3,

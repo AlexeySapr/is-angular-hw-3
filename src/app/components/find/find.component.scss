@@ -7,7 +7,12 @@ svg {
 }
 
 .theme-dark {
-  svg {
+  & .form-control {
+    background-color: #afbae8;
+    border-color: #afbae8;
+  }
+
+  & button svg {
     fill: cyan;
   }
 }

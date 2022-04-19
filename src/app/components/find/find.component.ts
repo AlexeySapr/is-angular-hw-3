@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FindService } from 'src/app/services/find.service';
+import { MoviesService } from 'src/app/services/movies.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class FindComponent implements OnInit, OnDestroy {
   private themeSubscr?: Subscription;
 
   constructor(
-    private findService: FindService,
+    private findService: MoviesService,
     private themeService: ThemeService
   ) {}
 

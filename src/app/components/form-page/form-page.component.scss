@@ -1,10 +1,21 @@
-.container {
-  //   background-color: tomato;
-}
+// .container {
+//   background-color: tomato;
+// }
 
 .form-container {
   border: 2px solid #829eb9;
   border-radius: 5px;
   padding: 10px;
   margin-top: 10px;
+}
+
+.theme-dark {
+  & .form-label {
+    color: #2a94a5;
+  }
+
+  & .form-control {
+    background-color: #afbae8;
+    border-color: #afbae8;
+  }
 }
