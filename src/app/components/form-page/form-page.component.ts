@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -52,10 +52,23 @@ export class FormPageComponent implements OnInit, OnDestroy {
   ) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
-      fileImage: new FormControl(''),
-      date: new FormControl('', Validators.required),
-      boxOffice: new FormControl('', Validators.min(0)),
+      fileImage: new FormControl(null),
+      date: new FormControl(null, Validators.required),
+      boxOffice: new FormControl(null, Validators.min(0)),
+      actors: new FormArray([]),
     });
+  }
+
+  get actorsFormArray() {
+    return this.form.get('actors') as FormArray;
+  }
+
+  addControl() {
+    this.actorsFormArray.push(new FormControl(null, Validators.required));
+  }
+
+  removeControl(index: number) {
+    this.actorsFormArray.removeAt(index);
   }
 
   ngOnInit(): void {
@@ -70,20 +83,15 @@ export class FormPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const val = this.form.value;
-    console.log('this.url: ', this.url);
-
-    if (!this.url) {
-      this.url = 'assets/images/emtyFilm.jpg';
-    }
 
     const newMovie: Movie = {
       id: UUID.UUID(),
       title: val.title,
-      poster_path: this.url,
+      poster_path: this.url || 'assets/images/emtyFilm.jpg',
       release_date: val.date,
       box_office: val.boxOffice,
       add_date: new Date(),
-      actors: [],
+      actors: val.actors,
     };
 
     this.moviesService.addMovie(newMovie);

@@ -9,6 +9,38 @@
   margin-top: 10px;
 }
 
+.actors-row {
+  position: relative;
+
+  .form-control {
+    margin-top: 1rem;
+  }
+
+  .removeBtn {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    svg {
+      fill: #b71e1e;
+    }
+  }
+}
+
+.addActorBtn {
+  margin-top: 1rem;
+}
+
+.btn-cont {
+  margin-top: 3rem;
+}
+
 .theme-dark {
   & .form-label {
     color: #2a94a5;
