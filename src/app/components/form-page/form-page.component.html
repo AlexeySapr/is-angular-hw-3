@@ -12,7 +12,8 @@
 
 			<div class="form-group col-md-6 mb-3">
 				<label for="moviePoster" class="form-label">Poster:</label>
-				<input type="file" accept="image/*" class="form-control" id="moviePoster" formControlName="fileImage">
+				<input type="file" accept="image/*" class="form-control" id="moviePoster" formControlName="fileImage"
+					(change)="selectFile($event)">
 			</div>
 
 			<div class="form-group col-md-6 mb-3">
@@ -22,11 +23,16 @@
 
 			<div class="form-group col-md-6 mb-3">
 				<label for="movieBoxOffice" class="form-label">Box office:</label>
-				<input type="number" class="form-control" id="movieBoxOffice" formControlName="boxOffice">
+				<input type="number" class="form-control" id="movieBoxOffice" formControlName="boxOffice" [min]="0">
 			</div>
 			<div class="btn-cont">
-				<button type="submit" class="btn btn-primary">Add movie</button>
+				<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add movie</button>
 			</div>
 		</form>
 	</div>
+
+	<!-- <div style="text-align:center">
+		<div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+		<div><img [src]="url" *ngIf="url"></div>
+	</div> -->
 </div>

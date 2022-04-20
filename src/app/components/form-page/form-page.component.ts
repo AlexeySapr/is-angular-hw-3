@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -18,16 +18,43 @@ export class FormPageComponent implements OnInit, OnDestroy {
   public themeMode?: string;
   private themeSubscr?: Subscription;
 
+  /*file upload*/
+  public url: any;
+  public msg = '';
+
+  selectFile(event: any) {
+    if (!event.target.files[0] || event.target.files[0].length == 0) {
+      this.msg = 'You must select an image';
+      return;
+    }
+
+    var mimeType = event.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      this.msg = 'Only images are supported';
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = (_event) => {
+      this.msg = '';
+      this.url = reader.result;
+    };
+  }
+  /************************* */
+
   constructor(
     private themeService: ThemeService,
     private moviesService: MoviesService,
     private location: Location
   ) {
     this.form = new FormGroup({
-      title: new FormControl(''),
+      title: new FormControl('', Validators.required),
       fileImage: new FormControl(''),
-      date: new FormControl(''),
-      boxOffice: new FormControl(''),
+      date: new FormControl('', Validators.required),
+      boxOffice: new FormControl('', Validators.min(0)),
     });
   }
 
@@ -43,11 +70,16 @@ export class FormPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const val = this.form.value;
+    console.log('this.url: ', this.url);
+
+    if (!this.url) {
+      this.url = 'assets/images/emtyFilm.jpg';
+    }
+
     const newMovie: Movie = {
       id: UUID.UUID(),
       title: val.title,
-      poster_path:
-        'https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+      poster_path: this.url,
       release_date: val.date,
       box_office: val.boxOffice,
       add_date: new Date(),
