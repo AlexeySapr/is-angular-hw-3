@@ -1,8 +1,13 @@
 .item-container {
-  display: flex;
   border: 2px solid #829eb9;
   border-radius: 5px;
   padding: 5px;
+
+  position: relative;
+}
+
+.main-text {
+  display: flex;
 
   & .thumb {
     max-width: 85px;
@@ -11,22 +16,54 @@
 }
 
 button {
-  margin-left: auto;
-  margin-top: auto;
-  height: 47px;
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  bottom: 5px;
+  right: 5px;
+  padding: 0;
 
   svg {
     fill: #b71e1e;
   }
 }
 
+.description__year {
+  margin-bottom: 0;
+}
+
+.actors-list {
+  padding-left: 0.3rem;
+}
+
+.description__add-date {
+  margin-top: 2rem;
+  color: #0236b3;
+}
+
+@media screen and (min-width: 576px) {
+  .actors-list {
+    display: flex;
+  }
+
+  .actors-item:not(:first-child) {
+    margin-left: 15px;
+  }
+}
+
 .theme-dark {
-  & .description__title {
+  .description__title {
     color: cyan;
   }
 
-  & .description__year,
-  & .description__box-office {
+  .description__year,
+  .description__box-office,
+  .actors-title,
+  .actors-list {
     color: #2a94a5;
+  }
+
+  .description__add-date {
+    color: cyan;
   }
 }

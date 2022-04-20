@@ -5,4 +5,5 @@ export interface Movie {
   release_date: string;
   box_office: number;
   add_date: string;
+  actors: string[];
 }

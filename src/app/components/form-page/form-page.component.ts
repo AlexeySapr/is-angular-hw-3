@@ -51,6 +51,7 @@ export class FormPageComponent implements OnInit, OnDestroy {
       release_date: val.date,
       box_office: val.boxOffice,
       add_date: Date.now().toLocaleString(),
+      actors: [],
     };
 
     this.moviesService.addMovie(newMovie);

@@ -1,11 +1,23 @@
 <div class="item-container">
-	<div class="thumb">
-		<img src={{movie?.poster_path}} alt="movie-poster">
+	<div class="main-text">
+		<div class="thumb">
+			<img src={{movie?.poster_path}} alt="movie-poster">
+		</div>
+		<div class="description" [ngClass]="{'theme-dark':isDarkTheme}">
+			<h4 class="description__title">{{movie?.title}}</h4>
+			<p class="description__year">Release date: {{movie?.release_date}}</p>
+			<p class="description__box-office">Box office: {{movie?.box_office | transformBoxOffice}}</p>
+		</div>
 	</div>
-	<div class="description" [ngClass]="{'theme-dark':isDarkTheme}">
-		<h4 class="description__title">{{movie?.title}}</h4>
-		<p class="description__year">Release date: {{movie?.release_date}}</p>
-		<p class="description__box-office">Box office: {{movie?.box_office | transformBoxOffice}}</p>
+
+	<div class="description-actors" [ngClass]="{'theme-dark':isDarkTheme}">
+		<div *ngIf="movie?.actors?.length !==0">
+			<h5 class="actors-title">Actors:</h5>
+			<ul class="actors-list">
+				<li class="actors-item" *ngFor="let actor of movie?.actors">{{actor}}</li>
+			</ul>
+		</div>
+		<p class="description__add-date">Add at: {{movie?.add_date}}</p>
 	</div>
 
 	<button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onDeleteClick(movie?.id)">
