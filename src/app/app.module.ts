@@ -12,6 +12,8 @@ import { TransformBoxOfficePipe } from './pipes/transform-box-office.pipe';
 import { FindComponent } from './components/find/find.component';
 import { MoviesPageComponent } from './components/movies-page/movies-page.component';
 import { FormPageComponent } from './components/form-page/form-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DelMovieModalComponent } from './components/del-movie-modal/del-movie-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { FormPageComponent } from './components/form-page/form-page.component';
     FindComponent,
     MoviesPageComponent,
     FormPageComponent,
+    DelMovieModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })

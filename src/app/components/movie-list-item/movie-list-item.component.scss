@@ -10,6 +10,16 @@
   }
 }
 
+button {
+  margin-left: auto;
+  margin-top: auto;
+  height: 47px;
+
+  svg {
+    fill: #b71e1e;
+  }
+}
+
 .theme-dark {
   & .description__title {
     color: cyan;
@@ -18,9 +28,5 @@
   & .description__year,
   & .description__box-office {
     color: #2a94a5;
-  }
-
-  & + button svg {
-    fill: #b71e1e;
   }
 }

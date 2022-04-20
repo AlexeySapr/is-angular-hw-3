@@ -32,3 +32,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.modal-dialog {
+  top: 20%;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
