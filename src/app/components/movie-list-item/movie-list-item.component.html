@@ -5,7 +5,7 @@
 		</div>
 		<div class="description" [ngClass]="{'theme-dark':isDarkTheme}">
 			<h4 class="description__title">{{movie?.title}}</h4>
-			<p class="description__year">Release date: {{movie?.release_date}}</p>
+			<p class="description__year">Release date: {{movie?.release_date | date:'YYYY-MM-dd'}}</p>
 			<p class="description__box-office">Box office: {{movie?.box_office | transformBoxOffice}}</p>
 		</div>
 	</div>
