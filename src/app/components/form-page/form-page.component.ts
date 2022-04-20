@@ -50,7 +50,7 @@ export class FormPageComponent implements OnInit, OnDestroy {
         'https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
       release_date: val.date,
       box_office: val.boxOffice,
-      add_date: Date.now().toLocaleString(),
+      add_date: new Date(),
       actors: [],
     };
 

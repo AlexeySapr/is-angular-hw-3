@@ -6,9 +6,9 @@ export const MOVIES: Movie[] = [
     title: 'Spider-Man: No Way Home',
     poster_path:
       'https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
-    release_date: '2021-12-15',
+    release_date: new Date('2021-12-15'),
     box_office: 11452,
-    add_date: '2022-12-15',
+    add_date: new Date('2022-12-15'),
     actors: ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Jacob Batalon'],
   },
   {
@@ -16,9 +16,9 @@ export const MOVIES: Movie[] = [
     title: 'Death on the Nile',
     poster_path:
       'https://image.tmdb.org/t/p/w300/kVr5zIAFSPRQ57Y1zE7KzmhzdMQ.jpg',
-    release_date: '2022-02-09',
+    release_date: new Date('2022-02-09'),
     box_office: 12703456,
-    add_date: '2022-12-15',
+    add_date: new Date('2022-12-15'),
     actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
   },
   // {

@@ -17,7 +17,7 @@
 				<li class="actors-item" *ngFor="let actor of movie?.actors">{{actor}}</li>
 			</ul>
 		</div>
-		<p class="description__add-date">Add at: {{movie?.add_date}}</p>
+		<p class="description__add-date">Add at: {{movie?.add_date | date:'YYYY-MM-dd'}}</p>
 	</div>
 
 	<button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onDeleteClick(movie?.id)">
