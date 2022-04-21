@@ -8,7 +8,7 @@ export const MOVIES: Movie[] = [
       'https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
     release_date: new Date('2021-12-15'),
     box_office: 11452,
-    add_date: new Date('2022-12-15'),
+    add_date: new Date('2022-01-07'),
     actors: ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Jacob Batalon'],
   },
   {
@@ -18,33 +18,39 @@ export const MOVIES: Movie[] = [
       'https://image.tmdb.org/t/p/w300/kVr5zIAFSPRQ57Y1zE7KzmhzdMQ.jpg',
     release_date: new Date('2022-02-09'),
     box_office: 12703456,
+    add_date: new Date('2022-03-15'),
+    actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+  },
+  {
+    id: '3',
+    title: 'The Batman',
+    poster_path:
+      'https://image.tmdb.org/t/p/w300/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    release_date: new Date('2021-03-01'),
+    box_office: 28353456,
+    add_date: new Date('2021-05-15'),
+    actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+  },
+  {
+    id: '4',
+    title: 'Sonic the Hedgehog 2',
+    poster_path:
+      'https://image.tmdb.org/t/p/w300/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg',
+    release_date: new Date('2020-03-30'),
+    box_office: 43034,
+    add_date: new Date('2021-06-15'),
+    actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+  },
+  {
+    id: '5',
+    title: 'All the Old Knives',
+    poster_path:
+      'https://image.tmdb.org/t/p/w300/g4tMniKxol1TBJrHlAtiDjjlx4Q.jpg',
+    release_date: new Date('2021-04-08'),
+    box_office: 100,
     add_date: new Date('2022-12-15'),
     actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
   },
-  // {
-  //   id: 3,
-  //   title: 'The Batman',
-  //   poster_path:
-  //     'https://image.tmdb.org/t/p/w300/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-  //   release_date: '2022-03-01',
-  //   box_office: 28353456,
-  // },
-  // {
-  //   id: 4,
-  //   title: 'Sonic the Hedgehog 2',
-  //   poster_path:
-  //     'https://image.tmdb.org/t/p/w300/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg',
-  //   release_date: '2022-03-30',
-  //   box_office: 43034,
-  // },
-  // {
-  //   id: 5,
-  //   title: 'All the Old Knives',
-  //   poster_path:
-  //     'https://image.tmdb.org/t/p/w300/g4tMniKxol1TBJrHlAtiDjjlx4Q.jpg',
-  //   release_date: '2022-04-08',
-  //   box_office: 100,
-  // },
   // {
   //   id: 6,
   //   title: 'Moonfall',

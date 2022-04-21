@@ -1,7 +1,23 @@
 <app-find></app-find>
 
-<div class="d-grid gap-2 col-6 mx-auto mt-3">
+<div class="d-grid gap-2 col-10 mx-auto mt-3">
 	<a class="btn btn-primary" role="button" routerLink="/add-movie">Add movie</a>
+
+	<div class="d-grid gap-2 col-3 sort-container">
+		<select (change)="selectOption($event)" class="form-select" aria-label="Default select example">
+			<option selected>Default</option>
+			<option value="title">by title</option>
+			<option value="release_date">by year</option>
+			<option value="add_date">by created date</option>
+		</select>
+
+		<!-- <select class="form-select" aria-label="Default select example">
+			<option selected>No sort</option>
+			<option value="ascending">ascending</option>
+			<option value="descending">descending</option>
+		</select> -->
+	</div>
 </div>
+
 
 <app-movies></app-movies>

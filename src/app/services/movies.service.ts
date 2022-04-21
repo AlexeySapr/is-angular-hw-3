@@ -36,12 +36,29 @@ export class MoviesService {
     this.movies.push(newMovie);
     this.filterMovie('');
     localStorage.setItem('movieList', JSON.stringify(this.movies));
+    this.filteredMovies$.next(this.movies);
   }
 
   deleteMovie(id: string) {
     const deleteIndex = this.movies.findIndex((movie) => movie.id === id);
     this.movies.splice(deleteIndex, 1);
     localStorage.setItem('movieList', JSON.stringify(this.movies));
+    this.filteredMovies$.next(this.movies);
+  }
+
+  sortByOption(option: string) {
+    const sortedMovies = Array.from(this.movies);
+    sortedMovies.sort((a: any, b: any) => {
+      if (a[option] < b[option]) {
+        return -1;
+      } else if (a[option] > b[option]) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    this.filteredMovies$.next(sortedMovies);
   }
 
   // logMovies(): void {
