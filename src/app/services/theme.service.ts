@@ -33,10 +33,8 @@ export class ThemeService {
 
     if (curVal === 'Light') {
       this.setTheme('Dark');
-      document.documentElement.style.setProperty('--theme-bg-color', '#001e3c');
     } else {
       this.setTheme('Light');
-      document.documentElement.style.setProperty('--theme-bg-color', '#e0e1e2');
     }
   }
 
@@ -52,6 +50,13 @@ export class ThemeService {
 
   private setTheme(theme: 'Dark' | 'Light'): void {
     localStorage.setItem('themeMode', theme);
+
+    if (theme === 'Dark') {
+      document.documentElement.style.setProperty('--theme-bg-color', '#001e3c');
+    } else {
+      document.documentElement.style.setProperty('--theme-bg-color', '#e0e1e2');
+    }
+
     this.theme$.next(theme);
   }
 

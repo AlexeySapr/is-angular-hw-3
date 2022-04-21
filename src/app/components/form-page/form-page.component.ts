@@ -51,10 +51,13 @@ export class FormPageComponent implements OnInit, OnDestroy {
     private location: Location
   ) {
     this.form = new FormGroup({
-      title: new FormControl('', Validators.required),
+      title: new FormControl('', [Validators.required]),
       fileImage: new FormControl(null),
       date: new FormControl(null, Validators.required),
-      boxOffice: new FormControl(null, Validators.min(0)),
+      boxOffice: new FormControl(null, [
+        Validators.min(0),
+        Validators.maxLength(10),
+      ]),
       actors: new FormArray([]),
     });
   }
