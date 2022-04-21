@@ -2,17 +2,11 @@
   margin-top: 20px;
 }
 
-svg {
-  fill: #2b3131;
+.form-control {
+  background-color: var(--form-control-bg-color);
+  border-color: var(--form-control-border-color);
 }
 
-.theme-dark {
-  & .form-control {
-    background-color: #afbae8;
-    border-color: #afbae8;
-  }
-
-  & button svg {
-    fill: cyan;
-  }
+svg {
+  fill: var(--find-icon-color);
 }

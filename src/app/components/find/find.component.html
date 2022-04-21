@@ -1,5 +1,5 @@
 <div class="container input-container">
-	<div class="input-group" [class.theme-dark]="themeMode === 'Dark'">
+	<div class="input-group">
 		<input type="text" class="form-control" placeholder="find movie..." [ngModel]="inputText"
 			(ngModelChange)="handleChange($event)">
 		<button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onFindClick()">

@@ -5,10 +5,27 @@
 
 :root {
   --theme-bg-color: #e0e1e2;
+  --header-bg-color: #8e9aa2;
+  --header-title: #2b3131;
+  --header-form-check-label: #2b3131;
+  --form-control-bg-color: #fff;
+  --form-control-border-color: #ced4da;
+  --find-icon-color: #2b3131;
 }
 
 body {
   background-color: var(--theme-bg-color);
+
+  &.dark {
+    --theme-bg-color: #001e3c;
+    --header-bg-color: #014b77;
+    --header-title: azure;
+    --header-form-check-label: azure;
+
+    --form-control-bg-color: #afbae8;
+    --form-control-border-color: #afbae8;
+    --find-icon-color: cyan;
+  }
 }
 
 a {

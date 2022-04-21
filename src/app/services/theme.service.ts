@@ -52,9 +52,9 @@ export class ThemeService {
     localStorage.setItem('themeMode', theme);
 
     if (theme === 'Dark') {
-      document.documentElement.style.setProperty('--theme-bg-color', '#001e3c');
+      document.body.classList.add('dark');
     } else {
-      document.documentElement.style.setProperty('--theme-bg-color', '#e0e1e2');
+      document.body.classList.remove('dark');
     }
 
     this.theme$.next(theme);

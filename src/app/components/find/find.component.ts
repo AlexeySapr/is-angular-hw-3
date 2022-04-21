@@ -1,29 +1,15 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
-import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-find',
   templateUrl: './find.component.html',
   styleUrls: ['./find.component.scss'],
 })
-export class FindComponent implements OnInit, OnDestroy {
+export class FindComponent {
   public inputText: string = '';
 
-  public themeMode?: string;
-  private themeSubscr?: Subscription;
-
-  constructor(
-    private findService: MoviesService,
-    private themeService: ThemeService
-  ) {}
-
-  ngOnInit(): void {
-    this.themeSubscr = this.themeService.theme$.subscribe((value) => {
-      this.themeMode = value;
-    });
-  }
+  constructor(private findService: MoviesService) {}
 
   handleChange(event: any) {
     this.inputText = event;
@@ -35,11 +21,5 @@ export class FindComponent implements OnInit, OnDestroy {
 
   onFindClick() {
     this.findService.filterMovie(this.inputText);
-  }
-
-  ngOnDestroy(): void {
-    if (this.themeSubscr) {
-      this.themeSubscr.unsubscribe();
-    }
   }
 }

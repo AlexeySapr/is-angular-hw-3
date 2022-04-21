@@ -1,10 +1,10 @@
 .container {
-  background-color: #8e9aa2;
+  background-color: var(--header-bg-color);
   text-align: center;
 }
 
 .title {
-  color: #2b3131;
+  color: var(--header-title);
 }
 
 span {
@@ -29,19 +29,5 @@ span {
 
 .form-check-label {
   margin-left: 7px;
-  color: #2b3131;
-}
-
-//theming
-.theme-dark {
-  background-color: #014b77;
-
-  & .title {
-    color: azure;
-  }
-
-  & .theme-switcher > label,
-  & .view-switcher > label {
-    color: azure;
-  }
+  color: var(--header-form-check-label);
 }

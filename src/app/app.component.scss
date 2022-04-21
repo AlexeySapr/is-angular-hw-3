@@ -1,7 +1,3 @@
 .content {
-  background-color: #e0e1e2;
-
-  &.theme-dark {
-    background-color: #001e3c;
-  }
+  background-color: var(--theme-bg-color);
 }
