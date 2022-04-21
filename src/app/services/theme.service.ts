@@ -33,8 +33,10 @@ export class ThemeService {
 
     if (curVal === 'Light') {
       this.setTheme('Dark');
+      document.documentElement.style.setProperty('--theme-bg-color', '#001e3c');
     } else {
       this.setTheme('Light');
+      document.documentElement.style.setProperty('--theme-bg-color', '#e0e1e2');
     }
   }
 
