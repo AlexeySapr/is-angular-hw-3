@@ -5,9 +5,12 @@
 
 	<div class="form-container">
 		<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
-			<div class="form-group col-md-6 mb-3">
+			<div class="form-group col-md-6 mb-3"
+				[ngClass]="{'has-error':form.get('title')?.invalid && form.get('title')?.touched}">
 				<label for="movieTitle" class="form-label">Title:</label>
 				<input type="text" class="form-control" id="movieTitle" formControlName="title">
+				<p class="input-error" *ngIf="form.get('title')?.invalid && form.get('title')?.touched">Title cannot be
+					empty</p>
 			</div>
 
 			<div class="form-group col-md-6 mb-3">
@@ -16,9 +19,12 @@
 					(change)="selectFile($event)">
 			</div>
 
-			<div class="form-group col-md-6 mb-3">
+			<div class="form-group col-md-6 mb-3"
+				[ngClass]="{'has-error':form.get('date')?.invalid && form.get('date')?.touched}">
 				<label for="movieRelease" class="form-label">Release date:</label>
 				<input type="date" class="form-control" id="movieRelease" formControlName="date">
+				<p class="input-error" *ngIf="form.get('date')?.invalid && form.get('date')?.touched">Date cannot be
+					empty</p>
 			</div>
 
 			<div class="form-group col-md-6 mb-3">

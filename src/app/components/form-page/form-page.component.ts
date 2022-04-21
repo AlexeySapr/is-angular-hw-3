@@ -48,10 +48,7 @@ export class FormPageComponent {
       title: new FormControl('', [Validators.required]),
       fileImage: new FormControl(null),
       date: new FormControl(null, Validators.required),
-      boxOffice: new FormControl(null, [
-        Validators.min(0),
-        Validators.maxLength(10),
-      ]),
+      boxOffice: new FormControl(null, [Validators.min(0)]),
       actors: new FormArray([]),
     });
   }
@@ -74,6 +71,7 @@ export class FormPageComponent {
 
   onSubmit() {
     const val = this.form.value;
+    console.log('this.form: ', this.form.controls);
 
     const newMovie: Movie = {
       id: UUID.UUID(),

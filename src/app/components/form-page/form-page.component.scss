@@ -5,6 +5,14 @@
   margin-top: 10px;
 }
 
+.input-error {
+  color: var(--remove-btn-color);
+}
+
+.has-error input {
+  border-color: var(--remove-btn-color);
+}
+
 .actors-row {
   position: relative;
 
