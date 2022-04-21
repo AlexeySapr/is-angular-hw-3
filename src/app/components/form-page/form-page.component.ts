@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
-import { ThemeService } from 'src/app/services/theme.service';
 import { UUID } from 'angular2-uuid';
 import { Movie } from 'src/app/models/movie';
 import { Location } from '@angular/common';
@@ -12,41 +10,37 @@ import { Location } from '@angular/common';
   templateUrl: './form-page.component.html',
   styleUrls: ['./form-page.component.scss'],
 })
-export class FormPageComponent implements OnInit, OnDestroy {
+export class FormPageComponent {
   public form: FormGroup;
-
-  public themeMode?: string;
-  private themeSubscr?: Subscription;
 
   /*file upload*/
   public url: any;
-  public msg = '';
+  // public msg = '';
 
   selectFile(event: any) {
-    if (!event.target.files[0] || event.target.files[0].length == 0) {
-      this.msg = 'You must select an image';
-      return;
-    }
+    // if (!event.target.files[0] || event.target.files[0].length == 0) {
+    //   this.msg = 'You must select an image';
+    //   return;
+    // }
 
-    var mimeType = event.target.files[0].type;
+    // var mimeType = event.target.files[0].type;
 
-    if (mimeType.match(/image\/*/) == null) {
-      this.msg = 'Only images are supported';
-      return;
-    }
+    // if (mimeType.match(/image\/*/) == null) {
+    //   this.msg = 'Only images are supported';
+    //   return;
+    // }
 
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
 
     reader.onload = (_event) => {
-      this.msg = '';
+      // this.msg = '';
       this.url = reader.result;
     };
   }
   /************************* */
 
   constructor(
-    private themeService: ThemeService,
     private moviesService: MoviesService,
     private location: Location
   ) {
@@ -74,12 +68,6 @@ export class FormPageComponent implements OnInit, OnDestroy {
     this.actorsFormArray.removeAt(index);
   }
 
-  ngOnInit(): void {
-    this.themeSubscr = this.themeService.theme$.subscribe((value) => {
-      this.themeMode = value;
-    });
-  }
-
   goBack(): void {
     this.location.back();
   }
@@ -100,11 +88,5 @@ export class FormPageComponent implements OnInit, OnDestroy {
     this.moviesService.addMovie(newMovie);
     this.form.reset();
     this.goBack();
-  }
-
-  ngOnDestroy(): void {
-    if (this.themeSubscr) {
-      this.themeSubscr.unsubscribe();
-    }
   }
 }

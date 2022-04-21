@@ -15,12 +15,17 @@
 .description__title {
   font-weight: 500;
   margin-bottom: 5px;
-  color: #048080;
+  color: var(--card-main-title-text-color);
   font-size: 1.3rem;
 }
 
 .description__year {
   margin-bottom: 2px;
+}
+
+.description__year,
+.description__box-office {
+  color: var(--secondary-text-color);
 }
 
 button {
@@ -30,20 +35,9 @@ button {
   top: 10px;
   right: 10px;
   padding: 0;
-  background-color: #ecacacb8;
+  background-color: var(--remove-btn-bg-color);
 
   svg {
-    fill: #e60303;
-  }
-}
-
-.theme-dark {
-  & .description__title {
-    color: cyan;
-  }
-
-  & .description__year,
-  & .description__box-office {
-    color: #2a94a5;
+    fill: var(--remove-btn-second-color);
   }
 }

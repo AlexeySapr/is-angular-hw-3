@@ -1,5 +1,5 @@
 .item-container {
-  border: 2px solid #829eb9;
+  border: 2px solid var(--custom-border-color);
   border-radius: 5px;
   padding: 5px;
 
@@ -24,7 +24,7 @@ button {
   padding: 0;
 
   svg {
-    fill: #b71e1e;
+    fill: var(--remove-btn-color);
   }
 }
 
@@ -36,9 +36,20 @@ button {
   padding-left: 0.3rem;
 }
 
+.description__year,
+.description__box-office,
+.actors-title,
+.actors-list {
+  color: var(--secondary-text-color);
+}
+
 .description__add-date {
   margin-top: 2rem;
-  color: #0236b3;
+  color: var(--add-date-text-color);
+}
+
+.description__title {
+  color: var(--card-main-title-text-color);
 }
 
 @media screen and (min-width: 576px) {
@@ -48,22 +59,5 @@ button {
 
   .actors-item:not(:first-child) {
     margin-left: 15px;
-  }
-}
-
-.theme-dark {
-  .description__title {
-    color: cyan;
-  }
-
-  .description__year,
-  .description__box-office,
-  .actors-title,
-  .actors-list {
-    color: #2a94a5;
-  }
-
-  .description__add-date {
-    color: cyan;
   }
 }

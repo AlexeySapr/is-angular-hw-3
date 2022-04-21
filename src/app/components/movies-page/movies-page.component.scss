@@ -10,5 +10,6 @@
 }
 
 .form-select {
-  background-color: #afbae8;
+  background-color: var(--form-control-bg-color);
+  border-color: var(--form-control-border-color);
 }

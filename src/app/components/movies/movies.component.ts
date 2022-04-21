@@ -13,9 +13,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
   public movies?: Movie[];
   private movieSubscr?: Subscription;
 
-  public themeMode?: string;
-  private themeSubscr?: Subscription;
-
   public viewMode?: string;
   private viewSubscr?: Subscription;
 
@@ -25,10 +22,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.themeSubscr = this.themeService.theme$.subscribe((value) => {
-      this.themeMode = value;
-    });
-
     this.viewSubscr = this.themeService.view$.subscribe((value) => {
       this.viewMode = value;
     });
@@ -39,10 +32,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.themeSubscr) {
-      this.themeSubscr.unsubscribe();
-    }
-
     if (this.viewSubscr) {
       this.viewSubscr.unsubscribe();
     }

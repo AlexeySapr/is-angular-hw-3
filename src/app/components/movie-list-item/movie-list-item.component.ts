@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -9,16 +9,13 @@ import { DelMovieModalComponent } from '../del-movie-modal/del-movie-modal.compo
   templateUrl: './movie-list-item.component.html',
   styleUrls: ['./movie-list-item.component.scss'],
 })
-export class MovieListItemComponent implements OnInit {
+export class MovieListItemComponent {
   @Input('movieItem') movie?: Movie;
-  @Input() isDarkTheme?: boolean;
 
   constructor(
     private moviesService: MoviesService,
     private modalService: NgbModal
   ) {}
-
-  ngOnInit(): void {}
 
   onDeleteClick(id: any) {
     const ref = this.modalService.open(DelMovieModalComponent);

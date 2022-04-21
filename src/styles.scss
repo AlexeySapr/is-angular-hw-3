@@ -11,6 +11,14 @@
   --form-control-bg-color: #fff;
   --form-control-border-color: #ced4da;
   --find-icon-color: #2b3131;
+  --custom-border-color: #829eb9;
+  --remove-btn-color: #b71e1e;
+  --remove-btn-second-color: #e60303;
+  --remove-btn-bg-color: #ecacacb8;
+
+  --card-main-title-text-color: #048080;
+  --secondary-text-color: #212529;
+  --add-date-text-color: #0236b3;
 }
 
 body {
@@ -25,6 +33,10 @@ body {
     --form-control-bg-color: #afbae8;
     --form-control-border-color: #afbae8;
     --find-icon-color: cyan;
+
+    --card-main-title-text-color: cyan;
+    --secondary-text-color: #2a94a5;
+    --add-date-text-color: cyan;
   }
 }
 

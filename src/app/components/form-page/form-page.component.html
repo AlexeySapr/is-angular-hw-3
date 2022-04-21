@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="form-container">
-		<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()" [class.theme-dark]="themeMode === 'Dark'">
+		<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
 			<div class="form-group col-md-6 mb-3">
 				<label for="movieTitle" class="form-label">Title:</label>
 				<input type="text" class="form-control" id="movieTitle" formControlName="title">
