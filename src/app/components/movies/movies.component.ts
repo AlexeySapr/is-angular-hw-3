@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private findService: MoviesService
+    private moviesService: MoviesService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
       this.viewMode = value;
     });
 
-    this.movieSubscr = this.findService.filteredMovies$.subscribe((value) => {
+    this.movieSubscr = this.moviesService.filteredMovies$.subscribe((value) => {
       this.movies = value;
     });
   }
