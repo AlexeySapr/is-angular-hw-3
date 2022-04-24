@@ -4,6 +4,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { UUID } from 'angular2-uuid';
 import { Movie } from 'src/app/models/movie';
 import { Location } from '@angular/common';
+import { UploadImgService } from 'src/app/services/upload-img.service';
 
 @Component({
   selector: 'app-form-page',
@@ -14,7 +15,7 @@ export class FormPageComponent {
   public form: FormGroup;
 
   /*file upload*/
-  public url: any;
+  public url: string = '';
   // public msg = '';
 
   selectFile(event: any) {
@@ -23,25 +24,34 @@ export class FormPageComponent {
     //   return;
     // }
 
-    // var mimeType = event.target.files[0].type;
+    // const mimeType = event.target.files[0].type;
 
     // if (mimeType.match(/image\/*/) == null) {
     //   this.msg = 'Only images are supported';
     //   return;
     // }
 
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
+    // const reader = new FileReader();
+    // reader.readAsDataURL(event.target.files[0]);
 
-    reader.onload = (_event) => {
-      // this.msg = '';
-      this.url = reader.result;
-    };
+    // reader.onload = (_event) => {
+    //   // this.msg = '';
+    //   this.url = reader.result;
+    // };
+
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    formData.append('upload_preset', 'ml_default');
+
+    this.uploadImgService.getImgUrl(formData).subscribe((data) => {
+      this.url = data.secure_url;
+    });
   }
   /************************* */
 
   constructor(
     private moviesService: MoviesService,
+    private uploadImgService: UploadImgService,
     private location: Location
   ) {
     this.form = new FormGroup({
@@ -74,7 +84,7 @@ export class FormPageComponent {
     console.log('this.form: ', this.form.controls);
 
     const newMovie: Movie = {
-      id: UUID.UUID(),
+      id: '',
       title: val.title,
       poster_path: this.url || 'assets/images/emtyFilm.jpg',
       release_date: val.date,
@@ -83,8 +93,10 @@ export class FormPageComponent {
       actors: val.actors,
     };
 
-    this.moviesService.addMovie(newMovie);
-    this.form.reset();
-    this.goBack();
+    this.moviesService
+      .addMovie(newMovie)
+      .subscribe((data) => console.log('data: ', data));
+    // this.form.reset();
+    // this.goBack();
   }
 }

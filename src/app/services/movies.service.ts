@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
 import { MOVIES } from '../constants/mock-movies';
 import { Movie } from '../models/movie';
 
@@ -7,10 +11,12 @@ import { Movie } from '../models/movie';
   providedIn: 'root',
 })
 export class MoviesService {
+  private baseUrl: string =
+    'https://6263b553005a66e1e3b642df.mockapi.io/movies/';
   private movies: Movie[];
   public filteredMovies$ = new BehaviorSubject<Movie[]>([]);
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const isMoviesInlocalStorage = localStorage.getItem('movieList');
 
     if (isMoviesInlocalStorage) {
@@ -19,6 +25,10 @@ export class MoviesService {
       this.movies = MOVIES;
     }
     this.filteredMovies$.next(this.movies);
+  }
+
+  getMovies() {
+    return this.http.get<Movie[]>(this.baseUrl);
   }
 
   filterMovie(movieStr: string): void {
@@ -33,17 +43,18 @@ export class MoviesService {
   }
 
   addMovie(newMovie: Movie) {
-    this.movies.push(newMovie);
-    this.filterMovie('');
-    localStorage.setItem('movieList', JSON.stringify(this.movies));
-    this.filteredMovies$.next(this.movies);
+    // this.movies.push(newMovie);
+    // this.filterMovie('');
+    // localStorage.setItem('movieList', JSON.stringify(this.movies));
+    // this.filteredMovies$.next(this.movies);
+    return this.http.post<Movie>(this.baseUrl, newMovie);
   }
 
   deleteMovie(id: string) {
-    const deleteIndex = this.movies.findIndex((movie) => movie.id === id);
-    this.movies.splice(deleteIndex, 1);
-    localStorage.setItem('movieList', JSON.stringify(this.movies));
-    this.filteredMovies$.next(this.movies);
+    // const deleteIndex = this.movies.findIndex((movie) => movie.id === id);
+    // this.movies.splice(deleteIndex, 1);
+    // localStorage.setItem('movieList', JSON.stringify(this.movies));
+    // this.filteredMovies$.next(this.movies);
   }
 
   sortByOption(option: string) {

@@ -26,8 +26,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
       this.viewMode = value;
     });
 
-    this.movieSubscr = this.moviesService.filteredMovies$.subscribe((value) => {
-      this.movies = value;
+    // this.movieSubscr = this.moviesService.filteredMovies$.subscribe((value) => {
+    //   this.movies = value;
+    // });
+
+    this.moviesService.getMovies().subscribe((data: Movie[]) => {
+      this.movies = data;
     });
   }
 
