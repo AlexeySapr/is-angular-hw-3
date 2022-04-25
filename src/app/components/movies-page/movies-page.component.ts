@@ -12,6 +12,5 @@ export class MoviesPageComponent {
   selectOption(event: any) {
     const sortOption = event.target.value;
     this.movieService.sortByOption(sortOption);
-    console.log('event: ', sortOption);
   }
 }

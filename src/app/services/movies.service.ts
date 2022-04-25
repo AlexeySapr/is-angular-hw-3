@@ -14,21 +14,10 @@ export class MoviesService {
   private baseUrl: string =
     'https://6263b553005a66e1e3b642df.mockapi.io/movies/';
 
-  private movies: Movie[] = [];
-  public filteredMovies$ = new BehaviorSubject<Movie[]>([]);
+  public movies$ = new BehaviorSubject<Movie[]>([]);
 
   constructor(private http: HttpClient) {
-    const isMoviesInlocalStorage = localStorage.getItem('movieList');
-
-    if (isMoviesInlocalStorage) {
-      this.movies = JSON.parse(isMoviesInlocalStorage);
-    } else {
-      // this.movies = MOVIES;
-      this.getMovies().subscribe((data: Movie[]) => {
-        this.movies = data;
-        this.filteredMovies$.next(this.movies);
-      });
-    }
+    this.fetchMovies();
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -49,60 +38,60 @@ export class MoviesService {
     );
   }
 
-  getMovies(): Observable<Movie[]> {
-    return this.http
+  private fetchMovies(): void {
+    this.http
       .get<Movie[]>(this.baseUrl)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError))
+      .subscribe((resp) => {
+        this.movies$.next(resp);
+      });
   }
 
-  addMovie(newMovie: Movie): Observable<Movie> {
-    // this.movies.push(newMovie);
-    // this.filterMovie('');
-    // localStorage.setItem('movieList', JSON.stringify(this.movies));
-    // this.filteredMovies$.next(this.movies);
-    return this.http
+  addMovie(newMovie: Movie): void {
+    this.http
       .post<Movie>(this.baseUrl, newMovie)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError))
+      .subscribe((resp) => {
+        this.movies$.next([...this.movies$.value, resp]);
+      });
   }
 
   deleteMovie(id: string) {
-    // const deleteIndex = this.movies.findIndex((movie) => movie.id === id);
-    // this.movies.splice(deleteIndex, 1);
-    // localStorage.setItem('movieList', JSON.stringify(this.movies));
-    // this.filteredMovies$.next(this.movies);
-
-    return this.http
+    this.http
       .delete(`${this.baseUrl}${id}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError))
+      .subscribe(() => {
+        const afterDeleteMovies = this.movies$.value.filter((m) => m.id !== id);
+        this.movies$.next(afterDeleteMovies);
+      });
   }
 
   filterMovie(movieStr: string): void {
     if (movieStr === '') {
-      this.filteredMovies$.next(this.movies);
+      this.fetchMovies();
     } else {
-      const afterFilter = this.movies.filter((movie) =>
-        movie.title.toLowerCase().includes(movieStr.toLowerCase())
+      const afterFilter = this.movies$.value.filter((m) =>
+        m.title.toLowerCase().includes(movieStr.toLowerCase())
       );
-      this.filteredMovies$.next(afterFilter);
+      this.movies$.next(afterFilter);
     }
   }
 
-  sortByOption(option: string) {
-    const sortedMovies = Array.from(this.movies);
-    sortedMovies.sort((a: any, b: any) => {
-      if (a[option] < b[option]) {
-        return -1;
-      } else if (a[option] > b[option]) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
-    this.filteredMovies$.next(sortedMovies);
+  sortByOption(option: string): void {
+    if (option === 'Sort') {
+      this.fetchMovies();
+    } else {
+      const sortedMovies = Array.from(this.movies$.value);
+      sortedMovies.sort((a: any, b: any) => {
+        if (a[option] < b[option]) {
+          return -1;
+        } else if (a[option] > b[option]) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      this.movies$.next(sortedMovies);
+    }
   }
-
-  // logMovies(): void {
-  //   console.log('filteredMovies: ', this.filteredMovies$);
-  // }
 }

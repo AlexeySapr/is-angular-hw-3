@@ -21,7 +21,7 @@ export class MovieListItemComponent {
     const ref = this.modalService.open(DelMovieModalComponent);
     ref.result.then(
       (ok) => {
-        this.moviesService.deleteMovie(id).subscribe();
+        this.moviesService.deleteMovie(id);
       },
       (cancel) => {
         console.log('cancel clicked');
