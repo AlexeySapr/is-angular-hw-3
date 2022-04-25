@@ -1,11 +1,11 @@
 <app-find></app-find>
 
 <div class="container add-sort-container">
-	<a class="btn btn-primary" role="button" routerLink="/add-movie">Add new movie</a>
+	<a class="btn btn-primary" routerLink="/add-movie">Add new movie</a>
 
 	<div class="select-container">
 		<select (change)="selectOption($event)" class="form-select" aria-label="Default select example">
-			<option selected>Sort</option>
+			<option selected>no sort</option>
 			<option value="title">by title</option>
 			<option value="release_date">by year</option>
 			<option value="add_date">by created date</option>

@@ -56,7 +56,7 @@ export class MoviesService {
       });
   }
 
-  deleteMovie(id: string) {
+  deleteMovie(id: string): void {
     this.http
       .delete(`${this.baseUrl}${id}`)
       .pipe(catchError(this.handleError))
