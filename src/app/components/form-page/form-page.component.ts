@@ -93,10 +93,8 @@ export class FormPageComponent {
       actors: val.actors,
     };
 
-    this.moviesService
-      .addMovie(newMovie)
-      .subscribe((data) => console.log('data: ', data));
-    // this.form.reset();
-    // this.goBack();
+    this.moviesService.addMovie(newMovie).subscribe();
+    this.form.reset();
+    this.goBack();
   }
 }

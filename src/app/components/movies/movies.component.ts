@@ -10,38 +10,23 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-  public movies?: Movie[];
-  private movieSubscr?: Subscription;
-
   public viewMode?: string;
   private viewSubscr?: Subscription;
 
   constructor(
     private themeService: ThemeService,
-    private moviesService: MoviesService
+    public moviesService: MoviesService
   ) {}
 
   ngOnInit(): void {
     this.viewSubscr = this.themeService.view$.subscribe((value) => {
       this.viewMode = value;
     });
-
-    // this.movieSubscr = this.moviesService.filteredMovies$.subscribe((value) => {
-    //   this.movies = value;
-    // });
-
-    this.moviesService.getMovies().subscribe((data: Movie[]) => {
-      this.movies = data;
-    });
   }
 
   ngOnDestroy(): void {
     if (this.viewSubscr) {
       this.viewSubscr.unsubscribe();
-    }
-
-    if (this.movieSubscr) {
-      this.movieSubscr.unsubscribe();
     }
   }
 }
