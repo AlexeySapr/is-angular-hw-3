@@ -28,4 +28,8 @@ export class MovieCardComponent {
       }
     );
   }
+
+  onFavoriteClick(id: any) {
+    console.log('id: ', id);
+  }
 }
