@@ -92,7 +92,7 @@ export class MoviesService {
   }
 
   sortByOption(option: string): void {
-    if (option === 'Sort') {
+    if (option === 'no sort') {
       this.fetchMovies();
     } else {
       const sortedMovies = Array.from(this.movies$.value);
