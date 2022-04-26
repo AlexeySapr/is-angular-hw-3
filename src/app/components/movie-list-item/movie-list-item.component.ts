@@ -28,4 +28,8 @@ export class MovieListItemComponent {
       }
     );
   }
+
+  onFavoriteClick() {
+    this.moviesService.updateMovie(this.movie);
+  }
 }

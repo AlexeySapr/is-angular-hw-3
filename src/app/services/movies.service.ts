@@ -15,6 +15,7 @@ export class MoviesService {
     'https://6263b553005a66e1e3b642df.mockapi.io/movies/';
 
   public movies$ = new BehaviorSubject<Movie[]>([]);
+  public favoriteMovies$ = new BehaviorSubject<Movie[]>([]);
 
   constructor(private http: HttpClient) {
     this.fetchMovies();
@@ -44,6 +45,8 @@ export class MoviesService {
       .pipe(catchError(this.handleError))
       .subscribe((resp) => {
         this.movies$.next(resp);
+        const newFavorite = this.movies$.value.filter((m) => m.isFavorite);
+        this.favoriteMovies$.next(newFavorite);
       });
   }
 
@@ -53,6 +56,17 @@ export class MoviesService {
       .pipe(catchError(this.handleError))
       .subscribe((resp) => {
         this.movies$.next([...this.movies$.value, resp]);
+      });
+  }
+
+  updateMovie(movie: any): void {
+    movie.isFavorite = !movie.isFavorite;
+    this.http
+      .put(`${this.baseUrl}${movie.id}`, movie)
+      .pipe(catchError(this.handleError))
+      .subscribe(() => {
+        const newFavorite = this.movies$.value.filter((m) => m.isFavorite);
+        this.favoriteMovies$.next(newFavorite);
       });
   }
 

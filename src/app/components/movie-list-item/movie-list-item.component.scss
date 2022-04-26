@@ -19,12 +19,32 @@ button {
   position: absolute;
   height: 45px;
   width: 45px;
+  padding: 0;
+}
+
+.btn-delete {
   bottom: 5px;
   right: 5px;
-  padding: 0;
 
   svg {
     fill: var(--remove-btn-color);
+  }
+}
+
+.btn-favorite {
+  top: 5px;
+  right: 5px;
+
+  svg {
+    fill: var(--favorite-btn-color);
+  }
+}
+
+.favorite {
+  background-color: #0bf3326b;
+
+  svg {
+    fill: #087319;
   }
 }
 

@@ -6,4 +6,5 @@ export interface Movie {
   box_office: number | string;
   add_date: Date;
   actors: string[];
+  isFavorite: boolean;
 }

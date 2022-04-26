@@ -91,6 +91,7 @@ export class FormPageComponent {
       box_office: val.boxOffice,
       add_date: new Date(),
       actors: val.actors,
+      isFavorite: false,
     };
 
     this.moviesService.addMovie(newMovie);

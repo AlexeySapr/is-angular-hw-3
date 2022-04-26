@@ -29,7 +29,7 @@ export class MovieCardComponent {
     );
   }
 
-  onFavoriteClick(id: any) {
-    console.log('id: ', id);
+  onFavoriteClick() {
+    this.moviesService.updateMovie(this.movie);
   }
 }

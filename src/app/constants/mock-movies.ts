@@ -10,6 +10,7 @@ export const MOVIES: Movie[] = [
     box_office: 11452,
     add_date: new Date('2022-01-07'),
     actors: ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Jacob Batalon'],
+    isFavorite: false,
   },
   {
     id: '2',
@@ -20,6 +21,7 @@ export const MOVIES: Movie[] = [
     box_office: 12703456,
     add_date: new Date('2022-03-15'),
     actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+    isFavorite: false,
   },
   {
     id: '3',
@@ -30,6 +32,7 @@ export const MOVIES: Movie[] = [
     box_office: 28353456,
     add_date: new Date('2021-05-15'),
     actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+    isFavorite: false,
   },
   {
     id: '4',
@@ -40,6 +43,7 @@ export const MOVIES: Movie[] = [
     box_office: 43034,
     add_date: new Date('2021-06-15'),
     actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+    isFavorite: false,
   },
   {
     id: '5',
@@ -49,7 +53,13 @@ export const MOVIES: Movie[] = [
     release_date: new Date('2021-04-08'),
     box_office: 100,
     add_date: new Date('2022-12-15'),
-    actors: ['Gal Gadot', 'Armie Hammer', 'Emma Mackey', 'Kenneth Branagh'],
+    actors: [
+      'Chris Pine',
+      'Thandiwe Newton',
+      'Laurence Fishburne',
+      'Jonathan Pryce',
+    ],
+    isFavorite: false,
   },
   // {
   //   id: 6,

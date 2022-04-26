@@ -65,9 +65,17 @@ button {
 .btn-favorite {
   top: 10px;
   left: 10px;
-  background-color: #9ee3a999;
+  background-color: var(--favorite-btn-bg-color);
 
   svg {
-    fill: #192817;
+    fill: var(--favorite-btn-color);
+  }
+}
+
+.favorite {
+  background-color: var(--favorite-add-btn-bg-color);
+
+  svg {
+    fill: var(--favorite-btn-bg-color);
   }
 }
